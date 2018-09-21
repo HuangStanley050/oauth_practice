@@ -6,6 +6,11 @@ router.get("/login", (req, res) => {
     res.render("login");
 });
 
+router.get("/logout", (req, res) => {
+    //res.send("Auth route");
+    res.send("logout");
+});
+
 router.get("/google", (req, res) => {
     //res.send("Auth route");
     res.send("goolg login");
