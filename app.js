@@ -3,7 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const passportSetup = require("./config/passport-setup");
+const mongoose = require("mongoose");
+const keys = require("./config/keys");
+//const passportSetup = require("./config/passport-setup");
+//const passport = require("passport");
 var indexRouter = require('./routes/index');
 const authRouter = require("./routes/auth-route");
 var usersRouter = require('./routes/users');
@@ -13,6 +16,11 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+mongoose.connect(keys.mongodb.dbURI, { useNewUrlParser: true }, () => {
+  console.log("connected to mongo");
+})
+
 
 app.use(logger('dev'));
 app.use(express.json());
