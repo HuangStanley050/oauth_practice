@@ -5,10 +5,11 @@ const keys = require("./keys");
 passport.use(
     new GoogleStrategy({
         clientID: keys.google.clientID,
-        clientSecret: keys.google.clientSecret
+        clientSecret: keys.google.clientSecret,
+        callbackURL: 'https://webdevpractice-infamousgodhand.c9users.io/auth/google/redirect'
 
-    }), () => {
+    }, () => {
 
-    }
+    })
 
 );
